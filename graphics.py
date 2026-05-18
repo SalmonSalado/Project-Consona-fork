@@ -10,6 +10,7 @@ from pygame.locals import *
 # function for building executable with PyInstaller adding the data files needed (images, sounds)
 
 BASE_PATH = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+ASSETS_PATH = os.path.join(BASE_PATH , 'art')
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -52,6 +53,14 @@ def draw_loading_screen(screen):
     screen.blit(loading_screen, (0, 0))
     pygame.display.flip()
 
+def load_image(filename , colorkey=False):
+    image = pygame.image.load(os.path.join(ASSETS_PATH , filename).convert_alpha();
+    
+                              p
+    if colorkey:
+        image.set_colorkey(255,255,255)
+
+    return image
 
 def load_graphics():
 
