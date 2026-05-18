@@ -10,7 +10,7 @@ from pygame.locals import *
 # function for building executable with PyInstaller adding the data files needed (images, sounds)
 
 BASE_PATH = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-ASSETS_PATH = os.path.join(BASE_PATH , 'art')
+ASSETS_PATH = os.path.join(BASE_PATH , 'resources/art')
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -53,13 +53,10 @@ def draw_loading_screen(screen):
     screen.blit(loading_screen, (0, 0))
     pygame.display.flip()
 
-def load_image(filename , colorkey=False):
-    image = pygame.image.load(os.path.join(ASSETS_PATH , filename).convert_alpha();
-    
-                              p
+def load_image(filename, colorkey=False):
+    image = pygame.image.load(os.path.join(ASSETS_PATH, filename)).convert_alpha()
     if colorkey:
-        image.set_colorkey(255,255,255)
-
+        image.set_colorkey((255, 255, 255))
     return image
 
 def load_graphics():
@@ -67,532 +64,253 @@ def load_graphics():
     loaded_dict = {}
 
     # non sprite sheets ------------------------------------------------------------------------------------------------
-    trading_deck_window = pygame.image.load(resource_path('resources/art/trading_deck_window.png')).convert_alpha()
-    trading_card_window = pygame.image.load(resource_path('resources/art/trading_card_window.png')).convert_alpha()
-    card_shop_screen = pygame.image.load(resource_path('resources/art/bg_card_shop.png')).convert_alpha()
-    all_cats_pet_card = pygame.image.load(resource_path('resources/art/all_cats_pet.png')).convert_alpha()
-    dreth_battle_screen = pygame.image.load(resource_path('resources/art/bg_dreth_battle.png')).convert_alpha()
-    fishing_journal = pygame.image.load(resource_path('resources/art/fishing_journal.png')).convert_alpha()
-    pet_energy_overlay = pygame.image.load(resource_path('resources/art/overlay_pet_energy.png')).convert_alpha()
-    pet_window_overlay = pygame.image.load(resource_path('resources/art/overlay_pet_window.png')).convert_alpha()
-    overlay_ectrene = pygame.image.load(resource_path('resources/art/overlay_ectrene.png')).convert_alpha()
-    overlay_advantages = pygame.image.load(resource_path('resources/art/overlay_type_advantages.png')).convert_alpha()
-    overlay_star_waterfall = pygame.image.load(resource_path('resources/art/stardust_waterfall.png')).convert_alpha()
-    overlay_bridge_gate = pygame.image.load(resource_path('resources/art/overlay_bridge_gate.png')).convert_alpha()
-    apothecary_window = pygame.image.load(resource_path('resources/art/overlay_apothecary_window.png')).convert_alpha()
-    weapon_select = pygame.image.load(resource_path('resources/art/overlay_weapon_select.png')).convert_alpha()
-    equipment_screen = pygame.image.load(resource_path('resources/art/overlay_equipment_screen.png')).convert_alpha()
-    a_char_screen = pygame.image.load(resource_path('resources/art/screen_amuna_character_select.png')).convert_alpha()
-    n_char_screen = pygame.image.load(resource_path('resources/art/screen_nuldar_character_select.png')).convert_alpha()
-    s_char_screen = pygame.image.load(resource_path('resources/art/screen_sorae_character_select.png')).convert_alpha()
-    nascent_grove_screen = pygame.image.load(resource_path('resources/art/bg_nascent_grove.png')).convert_alpha()
-    stardust_cove_screen = pygame.image.load(resource_path('resources/art/bg_stardust_post.png')).convert_alpha()
-    stardust_post_screen = pygame.image.load(resource_path('resources/art/bg_stardust_inn.png')).convert_alpha()
-    star_battle_screen = pygame.image.load(resource_path('resources/art/bg_stardust_battle_screen.png')).convert_alpha()
-    seldon_bg_screen = pygame.image.load(resource_path('resources/art/bg_seldon_district.png')).convert_alpha()
-    korlok_bg_screen = pygame.image.load(resource_path('resources/art/bg_korlok_district.png')).convert_alpha()
-    korlok_re_screen = pygame.image.load(resource_path('resources/art/bg_korlok_district_repaired.png')).convert_alpha()
-    korlok_mines_screen = pygame.image.load(resource_path('resources/art/bg_korlok_mines.png')).convert_alpha()
-    korlok_battle_screen = pygame.image.load(resource_path('resources/art/bg_korlok_battle_screen.png')).convert_alpha()
-    korlok_shop_screen = pygame.image.load(resource_path('resources/art/bg_korlok_shop.png')).convert_alpha()
-    korlok_inn_day = pygame.image.load(resource_path('resources/art/bg_korlok_inn.png')).convert_alpha()
-    korlok_inn_night = pygame.image.load(resource_path('resources/art/bg_korlok_inn_night.png')).convert_alpha()
-    korlok_inn_morning = pygame.image.load(resource_path('resources/art/bg_korlok_inn_morning.png')).convert_alpha()
-    korlok_inn_afternoon = pygame.image.load(resource_path('resources/art/bg_korlok_inn_afternoon.png')).convert_alpha()
-    korlok_apothecary = pygame.image.load(resource_path('resources/art/bg_korlok_apothecary.png')).convert_alpha()
-    fishing_hut_screen = pygame.image.load(resource_path('resources/art/bg_fishing_hut_screen.png')).convert_alpha()
-    korlok_forge_bg = pygame.image.load(resource_path('resources/art/bg_korlok_forge.png')).convert_alpha()
-    terra_trail_bg = pygame.image.load(resource_path('resources/art/bg_terra_trail.png')).convert_alpha()
-    eldream_bg_screen = pygame.image.load(resource_path('resources/art/bg_eldream_district.png')).convert_alpha()
-    eldream_inn_day = pygame.image.load(resource_path('resources/art/bg_eldream_inn.png')).convert_alpha()
-    eldream_inn_night = pygame.image.load(resource_path('resources/art/bg_eldream_inn_night.png')).convert_alpha()
-    eldream_inn_morning = pygame.image.load(resource_path('resources/art/bg_eldream_inn_morning.png')).convert_alpha()
-    eldream_inn_afternoon = (pygame.image.load
-                             (resource_path('resources/art/bg_eldream_inn_afternoon.png')).convert_alpha())
-    eldream_shop_screen = pygame.image.load(resource_path('resources/art/bg_eldream_shop.png')).convert_alpha()
-    eldream_menagerie = pygame.image.load(resource_path('resources/art/bg_eldream_menagerie.png')).convert_alpha()
-    eldream_interaction = pygame.image.load(resource_path('resources/art/bg_eldream_interaction.png')).convert_alpha()
-    eldream_altar_bg = pygame.image.load(resource_path('resources/art/bg_eldream_altar.png')).convert_alpha()
-    ectrenos_bg_screen = pygame.image.load(resource_path('resources/art/bg_ectrenos.png')).convert_alpha()
-    ectrenos_left_bg_screen = pygame.image.load(resource_path('resources/art/bg_ectrenos_left.png')).convert_alpha()
-    ectrenos_right_bg_screen = pygame.image.load(resource_path('resources/art/bg_ectrenos_right.png')).convert_alpha()
-    ectrenos_front_bg_screen = pygame.image.load(resource_path('resources/art/bg_ectrenos_front.png')).convert_alpha()
-    ectrenos_alcove_screen = pygame.image.load(resource_path('resources/art/bg_ectrenos_alcove.png')).convert_alpha()
-    alcove_b = pygame.image.load(resource_path('resources/art/bg_ectrenos_alcove_battle_screen.png')).convert_alpha()
-    alcove_fishing = pygame.image.load(resource_path('resources/art/bg_ectrenos_fishing.png')).convert_alpha()
-    ectrenos_interaction = pygame.image.load(resource_path('resources/art/bg_ectrenos_interaction.png')).convert_alpha()
-    ectrenos_mini_map = pygame.image.load(resource_path('resources/art/overlay_mini_map_ectrenos.png')).convert_alpha()
-    ect_mini_l = pygame.image.load(resource_path('resources/art/overlay_mini_map_ectrenos_left.png')).convert_alpha()
-    ect_mini_r = pygame.image.load(resource_path('resources/art/overlay_mini_map_ectrenos_right.png')).convert_alpha()
-    ect_mini_f = pygame.image.load(resource_path('resources/art/overlay_mini_map_ectrenos_front.png')).convert_alpha()
-    marrow_mini_map = pygame.image.load(resource_path('resources/art/overlay_mini_map_marrow.png')).convert_alpha()
-    mar_mini_t_l = pygame.image.load(resource_path('resources/art/overlay_mini_map_marrow_tower_l.png')).convert_alpha()
-    mar_mini_t_r = pygame.image.load(resource_path('resources/art/overlay_mini_map_marrow_tower_r.png')).convert_alpha()
-    mar_mini_r_l = pygame.image.load(resource_path('resources/art/overlay_mini_map_marrow_ramp_l.png')).convert_alpha()
-    mar_mini_r_r = pygame.image.load(resource_path('resources/art/overlay_mini_map_marrow_ramp_r.png')).convert_alpha()
-    mar_mini_r_e = \
-        pygame.image.load(resource_path('resources/art/overlay_mini_map_marrow_ramp_r_end.png')).convert_alpha()
-    mar_mini_l_e = \
-        pygame.image.load(resource_path('resources/art/overlay_mini_map_marrow_ramp_l_end.png')).convert_alpha()
-    marrow_interaction_bg = pygame.image.load(resource_path('resources/art/bg_marrow_interaction.png')).convert_alpha()
-    marrow_entrance_bg = pygame.image.load(resource_path('resources/art/bg_marrow_enter.png')).convert_alpha()
-    marrow_entrance_bg_open = pygame.image.load(resource_path('resources/art/bg_marrow_enter_open.png')).convert_alpha()
-    mar_tower_e_bg = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_tower_east.png')).convert_alpha()
-    mar_tower_w_bg = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_tower_west.png')).convert_alpha()
-    mar_rampart_e_bg = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_east.png')).convert_alpha()
-    mar_rampart_w_bg = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_west.png')).convert_alpha()
-    m_ramp_e_end_bg = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_east_end.png')).convert_alpha()
-    m_end_block = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_east_end_block.png')).convert_alpha()
-    m_ramp_w_end_bg = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_west_end.png')).convert_alpha()
-    marrow_district_bg = pygame.image.load(resource_path('resources/art/bg_marrow_district.png')).convert_alpha()
-    sub_marrow_bg = pygame.image.load(resource_path('resources/art/bg_sub_marrow.png')).convert_alpha()
-    sub_marrow_battle = pygame.image.load(resource_path('resources/art/bg_sub_marrow_battle.png')).convert_alpha()
-    castle_one_bg = pygame.image.load(resource_path('resources/art/bg_castle_one.png')).convert_alpha()
-    castle_one_rope_bg = pygame.image.load(resource_path('resources/art/bg_castle_one_roped.png')).convert_alpha()
-    castle_one_key_bg = pygame.image.load(resource_path('resources/art/bg_castle_one_keyed.png')).convert_alpha()
-    castle_two_bg = pygame.image.load(resource_path('resources/art/bg_castle_two.png')).convert_alpha()
-    castle_two_rope_bg = pygame.image.load(resource_path('resources/art/bg_castle_two_roped.png')).convert_alpha()
-    castle_three_bg = pygame.image.load(resource_path('resources/art/bg_castle_three.png')).convert_alpha()
-    castle_three_rope_bg = pygame.image.load(resource_path('resources/art/bg_castle_three_roped.png')).convert_alpha()
-    castle_lair_bg = pygame.image.load(resource_path('resources/art/bg_castle_lair.png')).convert_alpha()
-    castle_lair_zero_bg = pygame.image.load(resource_path('resources/art/bg_castle_lair_zero.png')).convert_alpha()
-    castle_lair_one_bg = pygame.image.load(resource_path('resources/art/bg_castle_lair_one.png')).convert_alpha()
-    castle_lair_two_bg = pygame.image.load(resource_path('resources/art/bg_castle_lair_two.png')).convert_alpha()
-    caldera_bg = pygame.image.load(resource_path('resources/art/bg_caldera.png')).convert_alpha()
-    e_f_interact = pygame.image.load(resource_path('resources/art/bg_ectrenos_interaction_front.png')).convert_alpha()
-    fishing_hut_bg = pygame.image.load(resource_path('resources/art/bg_fishing_hut.png')).convert_alpha()
-    terra_trail_screen = pygame.image.load(resource_path('resources/art/bg_terra_trail_screen.png')).convert_alpha()
-    caves_battle_screen = pygame.image.load(resource_path('resources/art/bg_cave_battle_screen.png')).convert_alpha()
-    mines_battle_screen = pygame.image.load(resource_path('resources/art/bg_mines_battle.png')).convert_alpha()
-    rohir_river_screen = pygame.image.load(resource_path('resources/art/bg_rohir_river.png')).convert_alpha()
-    reservoir_a_screen = pygame.image.load(resource_path('resources/art/bg_reservoir_a.png')).convert_alpha()
-    reservoir_b_screen = pygame.image.load(resource_path('resources/art/bg_reservoir_b.png')).convert_alpha()
-    reservoir_c_screen = pygame.image.load(resource_path('resources/art/bg_reservoir_c.png')).convert_alpha()
-    reservoir_battle = pygame.image.load(resource_path('resources/art/bg_reservoir_battle_screen.png')).convert_alpha()
-    seldon_battle_screen = pygame.image.load(resource_path('resources/art/bg_seldon_battle_screen.png')).convert_alpha()
-    nascent_screen = pygame.image.load(resource_path('resources/art/bg_nascent_interaction_screen.png')).convert_alpha()
-    seldon_shop_screen = pygame.image.load(resource_path('resources/art/bg_seldon_shop.png')).convert_alpha()
-    seldon_inn_day = pygame.image.load(resource_path('resources/art/bg_seldon_inn.png')).convert_alpha()
-    seldon_inn_night = pygame.image.load(resource_path('resources/art/bg_seldon_inn_night.png')).convert_alpha()
-    seldon_inn_morning = pygame.image.load(resource_path('resources/art/bg_seldon_inn_morning.png')).convert_alpha()
-    seldon_inn_afternoon = pygame.image.load(resource_path('resources/art/bg_seldon_inn_afternoon.png')).convert_alpha()
-    seldon_academia_screen = pygame.image.load(resource_path('resources/art/bg_seldon_academia.png')).convert_alpha()
-    seldon_hearth_screen = pygame.image.load(resource_path('resources/art/screen_seldon_hearth.png')).convert_alpha()
-    korlok_hearth_screen = pygame.image.load(resource_path('resources/art/screen_korlok_hearth.png')).convert_alpha()
-    eldream_hearth_screen = pygame.image.load(resource_path('resources/art/screen_eldream_hearth.png')).convert_alpha()
-    marrow_hearth_screen = pygame.image.load(resource_path('resources/art/screen_marrow_hearth.png')).convert_alpha()
-    game_over_screen = pygame.image.load(resource_path('resources/art/screen_game_over.png')).convert_alpha()
-    start_screen = pygame.image.load(resource_path('resources/art/start_screen.png')).convert_alpha()
-    start_screen_logo = pygame.image.load(resource_path('resources/art/start_screen_logo.png')).convert_alpha()
-    nera_sleep_screen = pygame.image.load(resource_path('resources/art/screen_nera_sleep.png')).convert_alpha()
-    bar_backdrop = pygame.image.load(resource_path('resources/art/overlay_status_bar_backdrop.png')).convert_alpha()
-    enemy_status = pygame.image.load(resource_path('resources/art/overlay_enemy_status_backdrop.png')).convert_alpha()
-    enemy_bar_backdrop = pygame.image.load(resource_path('resources/art/overlay_enemy_status_bar.png')).convert_alpha()
-    buy_inventory = pygame.image.load(resource_path('resources/art/overlay_buy_inventory.png')).convert_alpha()
-    pine_tree = pygame.image.load(resource_path('resources/art/sprite_pine_tree.png')).convert_alpha()
-    rohir_gate = pygame.image.load(resource_path('resources/art/overlay_rohir_gate.png')).convert_alpha()
-    lets_go_button = pygame.image.load(resource_path('resources/art/button_lets_go.png')).convert_alpha()
-    learn_button = pygame.image.load(resource_path('resources/art/overlay_learn.png')).convert_alpha()
-    skill_learn_button = pygame.image.load(resource_path('resources/art/overlay_skill_learn.png')).convert_alpha()
-    nascent_gate_popup = pygame.image.load(resource_path('resources/art/popup_nascent_gate.png')).convert_alpha()
-    level_up_win = pygame.image.load(resource_path('resources/art/popup_level_up.png')).convert_alpha()
-    close_button = pygame.image.load(resource_path('resources/art/button_close.png')).convert_alpha()
-    knowledge_window = pygame.image.load(resource_path('resources/art/overlay_knowledge.png')).convert_alpha()
-    skill_bar = pygame.image.load(resource_path('resources/art/overlay_skill_bar.png')).convert_alpha()
-    start_button = pygame.image.load(resource_path('resources/art/button_start.png')).convert_alpha()
-    npc_name_plate = pygame.image.load(resource_path('resources/art/overlay_npc_name_plate.png')).convert_alpha()
-    char_select_overlay = pygame.image.load(resource_path('resources/art/overlay_character_select.png')).convert_alpha()
-    role_selection_overlay = pygame.image.load(resource_path('resources/art/overlay_role_select.png')).convert_alpha()
-    location_overlay = pygame.image.load(resource_path('resources/art/overlay_location.png')).convert_alpha()
-    popup_loot = pygame.image.load(resource_path('resources/art/popup_enemy_defeat.png')).convert_alpha()
-    stardust_entrance = pygame.image.load(resource_path('resources/art/overlay_stardust_entrance.png')).convert_alpha()
-    upgrade_overlay = pygame.image.load(resource_path('resources/art/overlay_upgrade_select.png')).convert_alpha()
-    cat_pet_button_overlay = pygame.image.load(resource_path('resources/art/overlay_cat_pet.png')).convert_alpha()
-    book_high = pygame.image.load(resource_path('resources/art/book_button_highlight.png')).convert_alpha()
-    save_hearth_high = pygame.image.load(resource_path('resources/art/buttons_small_high.png')).convert_alpha()
-    lets_go_high = pygame.image.load(resource_path('resources/art/button_lets_go_highlight.png')).convert_alpha()
-    water_player = pygame.image.load(resource_path('resources/art/overlay_water_player.png')).convert_alpha()
-    water = pygame.image.load(resource_path('resources/art/overlay_water.png')).convert_alpha()
-    dungeon_entrance = pygame.image.load(resource_path('resources/art/overlay_dungeon_entrance.png')).convert_alpha()
-    world_map = pygame.image.load(resource_path('resources/art/consona_region_map.png')).convert_alpha()
-    world_map_button = pygame.image.load(resource_path('resources/art/button_map.png')).convert_alpha()
-    world_map_button_high = pygame.image.load(resource_path('resources/art/button_map_highlight.png')).convert_alpha()
-    nede_big = pygame.image.load(resource_path('resources/art/sprites_nede_big.png')).convert_alpha()
-    dungeon_wall_1 = pygame.image.load(resource_path('resources/art/overlay_dungeon_wall_1.png')).convert_alpha()
-    dungeon_wall_2 = pygame.image.load(resource_path('resources/art/overlay_dungeon_wall_2.png')).convert_alpha()
-    dungeon_teleport = pygame.image.load(resource_path('resources/art/overlay_dungeon_teleporter.png')).convert_alpha()
-    dungeon_drop_wall = pygame.image.load(resource_path('resources/art/overlay_dungeon_drop_wall.png')).convert_alpha()
-    dungeon_gate = pygame.image.load(resource_path('resources/art/overlay_dungeon_gate.png')).convert_alpha()
-    muchador_arena = pygame.image.load(resource_path('resources/art/overlay_muchador_arena.png')).convert_alpha()
-    reservoir_passage = pygame.image.load(resource_path('resources/art/overlay_reservoir_passage.png')).convert_alpha()
-    reservoir_exit = pygame.image.load(resource_path('resources/art/overlay_reservoir_exit.png')).convert_alpha()
-    reservoir_enter = pygame.image.load(resource_path('resources/art/overlay_reservoir_enter.png')).convert_alpha()
-    mines_entrance = pygame.image.load(resource_path('resources/art/overlay_mines_entrance.png')).convert_alpha()
-    mines_wall = pygame.image.load(resource_path('resources/art/overlay_mines_wall.png')).convert_alpha()
-    mines_light = pygame.image.load(resource_path('resources/art/overlay_mines_light.png')).convert_alpha()
-    terra_mountains = pygame.image.load(resource_path('resources/art/'
-                                                      'overlay_terra_trail_mountains.png')).convert_alpha()
-    terra_cave = pygame.image.load(resource_path('resources/art/overlay_trail_cave.png')).convert_alpha()
-    sprite_chinzilla = pygame.image.load(resource_path('resources/art/sprite_chinzilla.png')).convert_alpha()
-    overlay_eldream_river = pygame.image.load(resource_path('resources/art/overlay_eldream_river.png')).convert_alpha()
-    overlay_chroma_bridge = pygame.image.load(resource_path('resources/art/overlay_chroma_bridge.png')).convert_alpha()
-    chroma_small = pygame.image.load(resource_path('resources/art/overlay_chroma_bridge_small.png')).convert_alpha()
-    chroma_forge = pygame.image.load(resource_path('resources/art/overlay_chroma_bridge_forge.png')).convert_alpha()
-    stardust_top = pygame.image.load(resource_path('resources/art/overlay_stardust_top.png')).convert_alpha()
-    alcove_star = pygame.image.load(resource_path('resources/art/overlay_alcove_star.png')).convert_alpha()
-    tree_tops = pygame.image.load(resource_path('resources/art/overlay_tree_tops.png')).convert_alpha()
-    a_building_tops = pygame.image.load(resource_path('resources/art/overlay_amuna_building_tops.png')).convert_alpha()
-    n_building_tops = pygame.image.load(resource_path('resources/art/overlay_nuldar_building_tops.png')).convert_alpha()
-    level_up_vis = pygame.image.load(resource_path('resources/art/overlay_level_up.png')).convert_alpha()
-    quest_accepted = pygame.image.load(resource_path('resources/art/overlay_quest_accepted.png')).convert_alpha()
-    task_accepted = pygame.image.load(resource_path('resources/art/overlay_task_accepted.png')).convert_alpha()
-    kart_overworld = pygame.image.load(resource_path('resources/art/sprite_kart_overworld_full.png')).convert_alpha()
-    kart_big_full = pygame.image.load(resource_path('resources/art/sprite_kart_full.png')).convert_alpha()
-    mirror_overlay = pygame.image.load(resource_path('resources/art/overlay_mirror_image.png')).convert_alpha()
-    over_mar_ramps_west = pygame.image.load(resource_path('resources/art/overlay_marrow_ramp_west.png')).convert_alpha()
-    over_mar_ramps_east = pygame.image.load(resource_path('resources/art/overlay_marrow_ramp_east.png')).convert_alpha()
-    overlay_chroma_ramps = pygame.image.load(resource_path('resources/art/overlay_chroma_ramps.png')).convert_alpha()
-    popup_wide = pygame.image.load(resource_path('resources/art/popup_interaction_wide.png')).convert_alpha()
-    ramparts_battle = pygame.image.load(resource_path('resources/art/bg_marrow_rampart_battle.png')).convert_alpha()
-    tower_battle = pygame.image.load(resource_path('resources/art/bg_marrow_tower_battle.png')).convert_alpha()
-    overlay_enemy_vanish = pygame.image.load(resource_path('resources/art/overlay_enemy_vanish.png')).convert_alpha()
-    overlay_smelting = pygame.image.load(resource_path('resources/art/overlay_smelting.png')).convert_alpha()
-    overlay_enchanting = pygame.image.load(resource_path('resources/art/overlay_enchanting.png')).convert_alpha()
-    overlay_flower_counts = pygame.image.load(resource_path('resources/art/overlay_flower_counts.png')).convert_alpha()
-    overlay_fish_counts = pygame.image.load(resource_path('resources/art/overlay_fish_counts.png')).convert_alpha()
-    apothis_star = pygame.image.load(resource_path('resources/art/apothis_gift_star_overlay.png')).convert_alpha()
-    overlay_stardust_star = pygame.image.load(resource_path('resources/art/overlay_stardust_star.png')).convert_alpha()
-
-    m_switch = pygame.image.load(resource_path('resources/art/overlay_marrow_switch.png')).convert_alpha()
-    m_switch_b = pygame.image.load(resource_path('resources/art/overlay_marrow_switch_blue.png')).convert_alpha()
-    m_switch_r = pygame.image.load(resource_path('resources/art/overlay_marrow_switch_red.png')).convert_alpha()
-    m_switch_p = pygame.image.load(resource_path('resources/art/overlay_marrow_switch_purple.png')).convert_alpha()
-    m_switch_c = pygame.image.load(resource_path('resources/art/overlay_marrow_switch_complete.png')).convert_alpha()
-    m_switch_box = pygame.image.load(resource_path('resources/art/marrow_switch_box.png')).convert_alpha()
-    chest_small = pygame.image.load(resource_path('resources/art/sprite_dungeon_chest_small.png')).convert_alpha()
-    overlay_prism = pygame.image.load(resource_path('resources/art/overlay_prism_activate.png')).convert_alpha()
-
-    apothis_scene_1 = pygame.image.load(resource_path('resources/art/cutscene_apothis_1.png')).convert_alpha()
-    apothis_scene_2 = pygame.image.load(resource_path('resources/art/cutscene_apothis_2.png')).convert_alpha()
-    apothis_scene_3 = pygame.image.load(resource_path('resources/art/cutscene_apothis_3.png')).convert_alpha()
-    apothis_scene_4 = pygame.image.load(resource_path('resources/art/cutscene_apothis_4.png')).convert_alpha()
-    apothis_scene_5 = pygame.image.load(resource_path('resources/art/cutscene_apothis_5.png')).convert_alpha()
-    apothis_scene_6 = pygame.image.load(resource_path('resources/art/cutscene_apothis_6.png')).convert_alpha()
-
-    apothis_scene_1_n = pygame.image.load(resource_path('resources/art/cutscene_apothis_1_night.png')).convert_alpha()
-    apothis_scene_2_n = pygame.image.load(resource_path('resources/art/cutscene_apothis_2_night.png')).convert_alpha()
-    apothis_scene_3_n = pygame.image.load(resource_path('resources/art/cutscene_apothis_3_night.png')).convert_alpha()
-    apothis_scene_4_n = pygame.image.load(resource_path('resources/art/cutscene_apothis_4_night.png')).convert_alpha()
-    apothis_scene_5_n = pygame.image.load(resource_path('resources/art/cutscene_apothis_5_night.png')).convert_alpha()
-    apothis_scene_6_n = pygame.image.load(resource_path('resources/art/cutscene_apothis_6_night.png')).convert_alpha()
-
-    dreth_scene_0 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_0.png')).convert_alpha()
-    dreth_scene_1 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_1.png')).convert_alpha()
-    dreth_scene_2 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_2.png')).convert_alpha()
-    dreth_scene_3 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_3.png')).convert_alpha()
-    dreth_scene_4 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_4.png')).convert_alpha()
-    dreth_scene_5 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_5.png')).convert_alpha()
-    dreth_scene_6 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_6.png')).convert_alpha()
-    dreth_scene_7 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_7.png')).convert_alpha()
-    dreth_scene_8 = pygame.image.load(resource_path('resources/art/cutscene_apothis_dreth_8.png')).convert_alpha()
-
-    final_scene_1 = pygame.image.load(resource_path('resources/art/cutscene_final_1.png')).convert_alpha()
-    final_scene_2 = pygame.image.load(resource_path('resources/art/cutscene_final_2.png')).convert_alpha()
-    final_scene_3 = pygame.image.load(resource_path('resources/art/cutscene_final_3.png')).convert_alpha()
-    final_scene_4 = pygame.image.load(resource_path('resources/art/cutscene_final_4.png')).convert_alpha()
-    final_scene_5 = pygame.image.load(resource_path('resources/art/cutscene_final_5.png')).convert_alpha()
-    final_scene_6 = pygame.image.load(resource_path('resources/art/cutscene_final_6.png')).convert_alpha()
-    final_scene_7 = pygame.image.load(resource_path('resources/art/cutscene_final_7.png')).convert_alpha()
-    final_scene_8 = pygame.image.load(resource_path('resources/art/cutscene_final_8.png')).convert_alpha()
-    final_scene_9 = pygame.image.load(resource_path('resources/art/cutscene_final_9.png')).convert_alpha()
-    final_scene_10 = pygame.image.load(resource_path('resources/art/cutscene_final_10.png')).convert_alpha()
-    final_scene_11 = pygame.image.load(resource_path('resources/art/cutscene_final_11.png')).convert_alpha()
-    final_scene_12 = pygame.image.load(resource_path('resources/art/cutscene_final_12.png')).convert_alpha()
-    final_scene_13 = pygame.image.load(resource_path('resources/art/cutscene_final_13.png')).convert_alpha()
-    final_scene_14 = pygame.image.load(resource_path('resources/art/cutscene_final_14.png')).convert_alpha()
-
-    credit_scene_1 = pygame.image.load(resource_path('resources/art/screen_credits_marrow.png')).convert_alpha()
-    credit_scene_2 = pygame.image.load(resource_path('resources/art/screen_credits_seldon.png')).convert_alpha()
-    credit_scene_3 = pygame.image.load(resource_path('resources/art/screen_credits_korlok.png')).convert_alpha()
-    credit_scene_4 = pygame.image.load(resource_path('resources/art/screen_credits_eldream.png')).convert_alpha()
-    credit_scene_5 = pygame.image.load(resource_path('resources/art/screen_credits_thanks.png')).convert_alpha()
-
-    effect_dawn = pygame.image.load(resource_path('resources/art/effect_dawn.png')).convert_alpha()
-    effect_e_morning = pygame.image.load(resource_path('resources/art/effect_early_morning.png')).convert_alpha()
-    effect_morning = pygame.image.load(resource_path('resources/art/effect_morning.png')).convert_alpha()
-    effect_e_afternoon = pygame.image.load(resource_path('resources/art/effect_early_afternoon.png')).convert_alpha()
-    effect_afternoon = pygame.image.load(resource_path('resources/art/effect_afternoon.png')).convert_alpha()
-    effect_dusk = pygame.image.load(resource_path('resources/art/effect_dusk.png')).convert_alpha()
-    effect_night = pygame.image.load(resource_path('resources/art/effect_night.png')).convert_alpha()
-
-    night_sleep_overlay = pygame.image.load(resource_path('resources/art/night_sleep_overlay.png')).convert_alpha()
-
-    color_keys = [bar_backdrop, enemy_status, enemy_bar_backdrop, buy_inventory, pine_tree,
-                  rohir_gate, lets_go_button, learn_button, skill_learn_button, nascent_gate_popup, level_up_win,
-                  close_button, knowledge_window, skill_bar, start_button, npc_name_plate, char_select_overlay,
-                  role_selection_overlay, location_overlay, popup_loot, stardust_entrance, book_high,
-                  upgrade_overlay, cat_pet_button_overlay, save_hearth_high, lets_go_high, dungeon_entrance,
-                  world_map_button, world_map_button_high, nede_big, dungeon_wall_1, dungeon_wall_2, dungeon_gate,
-                  reservoir_passage, reservoir_exit, reservoir_enter, mines_entrance,
-                  mines_wall, mines_light, terra_mountains, terra_cave, weapon_select,
-                  overlay_eldream_river, overlay_advantages, overlay_ectrene, pet_energy_overlay, overlay_chroma_bridge,
-                  chroma_small, stardust_top, alcove_star, tree_tops, a_building_tops, level_up_vis, n_building_tops,
-                  kart_overworld, kart_big_full, mirror_overlay, start_screen_logo, overlay_star_waterfall,
-                  overlay_bridge_gate, over_mar_ramps_east, over_mar_ramps_west, overlay_chroma_ramps, m_switch,
-                  m_switch_b, m_switch_r, m_switch_p, m_switch_c, m_switch_box, popup_wide,
-                  overlay_enemy_vanish, chroma_forge, overlay_smelting, overlay_enchanting, chest_small, overlay_prism,
-                  apothis_star, overlay_stardust_star, night_sleep_overlay]
-
-    for image in color_keys:
-        image.set_colorkey((255, 255, 255))
-
-    loaded_dict["pet_window_overlay"] = pet_window_overlay
-    loaded_dict["night_sleep_overlay"] = night_sleep_overlay
-    loaded_dict["effect_dawn"] = effect_dawn
-    loaded_dict["effect_early_morning"] = effect_e_morning
-    loaded_dict["effect_morning"] = effect_morning
-    loaded_dict["effect_early_afternoon"] = effect_e_afternoon
-    loaded_dict["effect_afternoon"] = effect_afternoon
-    loaded_dict["effect_dusk"] = effect_dusk
-    loaded_dict["effect_night"] = effect_night
-    loaded_dict["trading_deck"] = trading_deck_window
-    loaded_dict["trading_window"] = trading_card_window
-    loaded_dict["card_shop_bg"] = card_shop_screen
-    loaded_dict["all_cats_pet_card"] = all_cats_pet_card
-    loaded_dict["apothis_star"] = apothis_star
-    loaded_dict["dreth_battle_screen"] = dreth_battle_screen
-    loaded_dict["castle_lair_bg"] = castle_lair_bg
-    loaded_dict["castle_lair_zero_bg"] = castle_lair_zero_bg
-    loaded_dict["castle_lair_one_bg"] = castle_lair_one_bg
-    loaded_dict["castle_lair_two_bg"] = castle_lair_two_bg
-    loaded_dict["caldera_bg"] = caldera_bg
-    loaded_dict["castle_two_bg"] = castle_two_bg
-    loaded_dict["castle_two_roped_bg"] = castle_two_rope_bg
-    loaded_dict["castle_three_bg"] = castle_three_bg
-    loaded_dict["castle_three_roped_bg"] = castle_three_rope_bg
-    loaded_dict["castle_one_bg"] = castle_one_bg
-    loaded_dict["castle_one_roped_bg"] = castle_one_rope_bg
-    loaded_dict["castle_one_keyed_bg"] = castle_one_key_bg
-    loaded_dict["overlay_prism"] = overlay_prism
-    loaded_dict["sub_marrow_battle_screen"] = sub_marrow_battle
-    loaded_dict["chest_small"] = chest_small
-    loaded_dict["flower_counts"] = overlay_flower_counts
-    loaded_dict["fish_counts"] = overlay_fish_counts
-    loaded_dict["fishing_journal"] = fishing_journal
-    loaded_dict["marrow_mini_map"] = marrow_mini_map
-    loaded_dict["marrow_mini_map_tower_left"] = mar_mini_t_l
-    loaded_dict["marrow_mini_map_tower_right"] = mar_mini_t_r
-    loaded_dict["marrow_mini_map_ramps_left"] = mar_mini_r_l
-    loaded_dict["marrow_mini_map_ramps_right"] = mar_mini_r_r
-    loaded_dict["marrow_mini_map_ramps_right_end"] = mar_mini_r_e
-    loaded_dict["marrow_mini_map_ramps_left_end"] = mar_mini_l_e
-    loaded_dict["ectrenos_mini_map_left"] = ect_mini_l
-    loaded_dict["ectrenos_mini_map_right"] = ect_mini_r
-    loaded_dict["ectrenos_mini_map_front"] = ect_mini_f
-    loaded_dict["ectrenos_mini_map"] = ectrenos_mini_map
-    loaded_dict["overlay_smelting"] = overlay_smelting
-    loaded_dict["overlay_enchanting"] = overlay_enchanting
-    loaded_dict["quest_accepted"] = quest_accepted
-    loaded_dict["task_accepted"] = task_accepted
-    loaded_dict["level_up_vis"] = level_up_vis
-    loaded_dict["amuna_building_top"] = a_building_tops
-    loaded_dict["nuldar_building_top"] = n_building_tops
-    loaded_dict["tree_top"] = tree_tops
-    loaded_dict["alcove_star"] = alcove_star
-    loaded_dict["ectrenos_front_interaction"] = e_f_interact
-    loaded_dict["ectrenos_interaction"] = ectrenos_interaction
-    loaded_dict["eldream_interaction"] = eldream_interaction
-    loaded_dict["stardust_top"] = stardust_top
-    loaded_dict["chroma_bridge_small"] = chroma_small
-    loaded_dict["chroma_bridge"] = overlay_chroma_bridge
-    loaded_dict["chroma_forge"] = chroma_forge
-    loaded_dict["pet_energy"] = pet_energy_overlay
-    loaded_dict["eldream_menagerie"] = eldream_menagerie
-    loaded_dict["overlay_ectrene"] = overlay_ectrene
-    loaded_dict["overlay_stardust_waterfall"] = overlay_star_waterfall
-    loaded_dict["overlay_bridge_gate"] = overlay_bridge_gate
-    loaded_dict["overlay_chroma_ramps"] = overlay_chroma_ramps
-    loaded_dict["ectrenos_bg"] = ectrenos_bg_screen
-    loaded_dict["ectrenos_left_bg"] = ectrenos_left_bg_screen
-    loaded_dict["ectrenos_right_bg"] = ectrenos_right_bg_screen
-    loaded_dict["ectrenos_front_bg"] = ectrenos_front_bg_screen
-    loaded_dict["ectrenos_alcove_bg"] = ectrenos_alcove_screen
-    loaded_dict["type advantages"] = overlay_advantages
-    loaded_dict["fishing_hut_bg"] = fishing_hut_bg
-    loaded_dict["fishing_hut_screen"] = fishing_hut_screen
-    loaded_dict["fishing_alcove_bg"] = alcove_fishing
-    loaded_dict["eldream_river"] = overlay_eldream_river
-    loaded_dict["apothecary_window"] = apothecary_window
-    loaded_dict["weapon_select"] = weapon_select
-    loaded_dict["chinzilla"] = sprite_chinzilla
-    loaded_dict["caves_battle_screen"] = caves_battle_screen
-    loaded_dict["equipment_screen"] = equipment_screen
-    loaded_dict["a_char_screen"] = a_char_screen
-    loaded_dict["n_char_screen"] = n_char_screen
-    loaded_dict["s_char_screen"] = s_char_screen
-    loaded_dict["nascent_grove_screen"] = nascent_grove_screen
-    loaded_dict["stardust_cove_screen"] = stardust_cove_screen
-    loaded_dict["stardust_post_screen"] = stardust_post_screen
-    loaded_dict["star_battle_screen"] = star_battle_screen
-    loaded_dict["seldon_bg_screen"] = seldon_bg_screen
-    loaded_dict["korlok_bg_screen"] = korlok_bg_screen
-    loaded_dict["korlok_repaired_screen"] = korlok_re_screen
-    loaded_dict["korlok_forge_bg"] = korlok_forge_bg
-    loaded_dict["eldream_bg_screen"] = eldream_bg_screen
-    loaded_dict["eldream_altar_bg"] = eldream_altar_bg
-    loaded_dict["marrow_interaction_bg"] = marrow_interaction_bg
-    loaded_dict["marrow_entrance_bg"] = marrow_entrance_bg
-    loaded_dict["marrow_entrance_bg_open"] = marrow_entrance_bg_open
-    loaded_dict["marrow_tower_east_bg"] = mar_tower_e_bg
-    loaded_dict["marrow_tower_west_bg"] = mar_tower_w_bg
-    loaded_dict["marrow_rampart_east_bg"] = mar_rampart_e_bg
-    loaded_dict["marrow_rampart_west_bg"] = mar_rampart_w_bg
-    loaded_dict["marrow_rampart_east_end_bg"] = m_ramp_e_end_bg
-    loaded_dict["marrow_rampart_west_end_bg"] = m_ramp_w_end_bg
-    loaded_dict["marrow_rampart_west_end_bg_block"] = m_end_block
-    loaded_dict["marrow_district_bg"] = marrow_district_bg
-    loaded_dict["sub_marrow_bg"] = sub_marrow_bg
-    loaded_dict["overlay_marrow_ramps_east"] = over_mar_ramps_east
-    loaded_dict["overlay_marrow_ramps_west"] = over_mar_ramps_west
-    loaded_dict["rohir_river_screen"] = rohir_river_screen
-    loaded_dict["reservoir_a_screen"] = reservoir_a_screen
-    loaded_dict["reservoir_b_screen"] = reservoir_b_screen
-    loaded_dict["reservoir_c_screen"] = reservoir_c_screen
-    loaded_dict["reservoir_battle_screen"] = reservoir_battle
-    loaded_dict["seldon_battle_screen"] = seldon_battle_screen
-    loaded_dict["nascent_interaction_screen"] = nascent_screen
-    loaded_dict["korlok_battle_screen"] = korlok_battle_screen
-    loaded_dict["mines_battle_screen"] = mines_battle_screen
-    loaded_dict["alcove_battle_screen"] = alcove_b
-    loaded_dict["seldon_shop_screen"] = seldon_shop_screen
-    loaded_dict["korlok_shop_screen"] = korlok_shop_screen
-    loaded_dict["eldream_shop_screen"] = eldream_shop_screen
-    loaded_dict["seldon_inn_day"] = seldon_inn_day
-    loaded_dict["seldon_inn_night"] = seldon_inn_night
-    loaded_dict["seldon_inn_morning"] = seldon_inn_morning
-    loaded_dict["seldon_inn_afternoon"] = seldon_inn_afternoon
-    loaded_dict["korlok_inn_day"] = korlok_inn_day
-    loaded_dict["korlok_inn_night"] = korlok_inn_night
-    loaded_dict["korlok_inn_morning"] = korlok_inn_morning
-    loaded_dict["korlok_inn_afternoon"] = korlok_inn_afternoon
-    loaded_dict["eldream_inn_day"] = eldream_inn_day
-    loaded_dict["eldream_inn_night"] = eldream_inn_night
-    loaded_dict["eldream_inn_morning"] = eldream_inn_morning
-    loaded_dict["eldream_inn_afternoon"] = eldream_inn_afternoon
-    loaded_dict["terra_trail_bg"] = terra_trail_bg
-    loaded_dict["seldon_academia_screen"] = seldon_academia_screen
-    loaded_dict["seldon_hearth_screen"] = seldon_hearth_screen
-    loaded_dict["eldream_hearth_screen"] = eldream_hearth_screen
-    loaded_dict["marrow_hearth_screen"] = marrow_hearth_screen
-    loaded_dict["game_over_screen"] = game_over_screen
-    loaded_dict["start_screen"] = start_screen
-    loaded_dict["start_screen_logo"] = start_screen_logo
-    loaded_dict["nera_sleep_screen"] = nera_sleep_screen
-    loaded_dict["bar_backdrop"] = bar_backdrop
-    loaded_dict["enemy_status"] = enemy_status
-    loaded_dict["enemy_bar_backdrop"] = enemy_bar_backdrop
-    loaded_dict["buy_inventory"] = buy_inventory
-    loaded_dict["pine_tree"] = pine_tree
-    loaded_dict["rohir_gate"] = rohir_gate
-    loaded_dict["lets_go_button"] = lets_go_button
-    loaded_dict["learn_button"] = learn_button
-    loaded_dict["skill_learn_button"] = skill_learn_button
-    loaded_dict["nascent_gate_popup"] = nascent_gate_popup
-    loaded_dict["level_up_win"] = level_up_win
-    loaded_dict["close_button"] = close_button
-    loaded_dict["knowledge_window"] = knowledge_window
-    loaded_dict["skill_bar"] = skill_bar
-    loaded_dict["start_button"] = start_button
-    loaded_dict["npc_name_plate"] = npc_name_plate
-    loaded_dict["char_select_overlay"] = char_select_overlay
-    loaded_dict["role_selection_overlay"] = role_selection_overlay
-    loaded_dict["location_overlay"] = location_overlay
-    loaded_dict["popup_loot"] = popup_loot
-    loaded_dict["stardust_entrance"] = stardust_entrance
-    loaded_dict["upgrade_overlay"] = upgrade_overlay
-    loaded_dict["cat_pet_button_overlay"] = cat_pet_button_overlay
-    loaded_dict["book_high"] = book_high
-    loaded_dict["save hearth high"] = save_hearth_high
-    loaded_dict["lets_go_button_high"] = lets_go_high
-    loaded_dict["apothis_1"] = apothis_scene_1
-    loaded_dict["apothis_2"] = apothis_scene_2
-    loaded_dict["apothis_3"] = apothis_scene_3
-    loaded_dict["apothis_4"] = apothis_scene_4
-    loaded_dict["apothis_5"] = apothis_scene_5
-    loaded_dict["apothis_6"] = apothis_scene_6
-    loaded_dict["apothis_1_night"] = apothis_scene_1_n
-    loaded_dict["apothis_2_night"] = apothis_scene_2_n
-    loaded_dict["apothis_3_night"] = apothis_scene_3_n
-    loaded_dict["apothis_4_night"] = apothis_scene_4_n
-    loaded_dict["apothis_5_night"] = apothis_scene_5_n
-    loaded_dict["apothis_6_night"] = apothis_scene_6_n
-    loaded_dict["dreth_0"] = dreth_scene_0
-    loaded_dict["dreth_1"] = dreth_scene_1
-    loaded_dict["dreth_2"] = dreth_scene_2
-    loaded_dict["dreth_3"] = dreth_scene_3
-    loaded_dict["dreth_4"] = dreth_scene_4
-    loaded_dict["dreth_5"] = dreth_scene_5
-    loaded_dict["dreth_6"] = dreth_scene_6
-    loaded_dict["dreth_7"] = dreth_scene_7
-    loaded_dict["dreth_8"] = dreth_scene_8
-    loaded_dict["final_1"] = final_scene_1
-    loaded_dict["final_2"] = final_scene_2
-    loaded_dict["final_3"] = final_scene_3
-    loaded_dict["final_4"] = final_scene_4
-    loaded_dict["final_5"] = final_scene_5
-    loaded_dict["final_6"] = final_scene_6
-    loaded_dict["final_7"] = final_scene_7
-    loaded_dict["final_8"] = final_scene_8
-    loaded_dict["final_9"] = final_scene_9
-    loaded_dict["final_10"] = final_scene_10
-    loaded_dict["final_11"] = final_scene_11
-    loaded_dict["final_12"] = final_scene_12
-    loaded_dict["final_13"] = final_scene_13
-    loaded_dict["final_14"] = final_scene_14
-    loaded_dict["credits_1"] = credit_scene_1
-    loaded_dict["credits_2"] = credit_scene_2
-    loaded_dict["credits_3"] = credit_scene_3
-    loaded_dict["credits_4"] = credit_scene_4
-    loaded_dict["credits_5"] = credit_scene_5
-    loaded_dict["water_player"] = water_player
-    loaded_dict["water"] = water
-    loaded_dict["dungeon_entrance"] = dungeon_entrance
-    loaded_dict["world_map"] = world_map
-    loaded_dict["map_button"] = world_map_button
-    loaded_dict["map_button_high"] = world_map_button_high
-    loaded_dict["nede_big"] = nede_big
-    loaded_dict["dungeon_wall_1"] = dungeon_wall_1
-    loaded_dict["dungeon_wall_2"] = dungeon_wall_2
-    loaded_dict["dungeon_teleporter"] = dungeon_teleport
-    loaded_dict["dungeon_drop_wall"] = dungeon_drop_wall
-    loaded_dict["dungeon_gate"] = dungeon_gate
-    loaded_dict["muchador_arena"] = muchador_arena
-    loaded_dict["reservoir_passage"] = reservoir_passage
-    loaded_dict["reservoir_exit"] = reservoir_exit
-    loaded_dict["reservoir_enter"] = reservoir_enter
-    loaded_dict["korlok_hearth_screen"] = korlok_hearth_screen
-    loaded_dict["mines_entrance"] = mines_entrance
-    loaded_dict["korlok_mines"] = korlok_mines_screen
-    loaded_dict["mines_wall"] = mines_wall
-    loaded_dict["mines_light"] = mines_light
-    loaded_dict["korlok_apothecary"] = korlok_apothecary
-    loaded_dict["terra_mountains"] = terra_mountains
-    loaded_dict["terra_cave"] = terra_cave
-    loaded_dict["terra_trail_screen"] = terra_trail_screen
-    loaded_dict["kart_overworld"] = kart_overworld
-    loaded_dict["kart_full"] = kart_big_full
-    loaded_dict["mirror_overlay"] = mirror_overlay
-    loaded_dict["marrow_switch"] = m_switch
-    loaded_dict["marrow_switch_blue"] = m_switch_b
-    loaded_dict["marrow_switch_red"] = m_switch_r
-    loaded_dict["marrow_switch_purple"] = m_switch_p
-    loaded_dict["marrow_switch_complete"] = m_switch_c
-    loaded_dict["marrow_switch_box"] = m_switch_box
-    loaded_dict["popup_wide"] = popup_wide
-    loaded_dict["marrow_ramparts_battle"] = ramparts_battle
-    loaded_dict["marrow_tower_battle"] = tower_battle
-    loaded_dict["overlay_enemy_vanish"] = overlay_enemy_vanish
-    loaded_dict["overlay_stardust_star"] = overlay_stardust_star
+    loaded_dict["pet_window_overlay"] = load_image('overlay_pet_window.png')
+    loaded_dict["night_sleep_overlay"] = load_image('night_sleep_overlay.png', colorkey=True)
+    loaded_dict["effect_dawn"] = load_image('effect_dawn.png')
+    loaded_dict["effect_early_morning"] = load_image('effect_early_morning.png')
+    loaded_dict["effect_morning"] = load_image('effect_morning.png')
+    loaded_dict["effect_early_afternoon"] = load_image('effect_early_afternoon.png')
+    loaded_dict["effect_afternoon"] = load_image('effect_afternoon.png')
+    loaded_dict["effect_dusk"] = load_image('effect_dusk.png')
+    loaded_dict["effect_night"] = load_image('effect_night.png')
+    loaded_dict["trading_deck"] = load_image('trading_deck_window.png')
+    loaded_dict["trading_window"] = load_image('trading_card_window.png')
+    loaded_dict["card_shop_bg"] = load_image('bg_card_shop.png')
+    loaded_dict["all_cats_pet_card"] = load_image('all_cats_pet.png')
+    loaded_dict["apothis_star"] = load_image('apothis_gift_star_overlay.png', colorkey=True)
+    loaded_dict["dreth_battle_screen"] = load_image('bg_dreth_battle.png')
+    loaded_dict["castle_lair_bg"] = load_image('bg_castle_lair.png')
+    loaded_dict["castle_lair_zero_bg"] = load_image('bg_castle_lair_zero.png')
+    loaded_dict["castle_lair_one_bg"] = load_image('bg_castle_lair_one.png')
+    loaded_dict["castle_lair_two_bg"] = load_image('bg_castle_lair_two.png')
+    loaded_dict["caldera_bg"] = load_image('bg_caldera.png')
+    loaded_dict["castle_two_bg"] = load_image('bg_castle_two.png')
+    loaded_dict["castle_two_roped_bg"] = load_image('bg_castle_two_roped.png')
+    loaded_dict["castle_three_bg"] = load_image('bg_castle_three.png')
+    loaded_dict["castle_three_roped_bg"] = load_image('bg_castle_three_roped.png')
+    loaded_dict["castle_one_bg"] = load_image('bg_castle_one.png')
+    loaded_dict["castle_one_roped_bg"] = load_image('bg_castle_one_roped.png')
+    loaded_dict["castle_one_keyed_bg"] = load_image('bg_castle_one_keyed.png')
+    loaded_dict["overlay_prism"] = load_image('overlay_prism_activate.png', colorkey=True)
+    loaded_dict["sub_marrow_battle_screen"] = load_image('bg_sub_marrow_battle.png')
+    loaded_dict["chest_small"] = load_image('sprite_dungeon_chest_small.png', colorkey=True)
+    loaded_dict["flower_counts"] = load_image('overlay_flower_counts.png')
+    loaded_dict["fish_counts"] = load_image('overlay_fish_counts.png')
+    loaded_dict["fishing_journal"] = load_image('fishing_journal.png')
+    loaded_dict["marrow_mini_map"] = load_image('overlay_mini_map_marrow.png')
+    loaded_dict["marrow_mini_map_tower_left"] = load_image('overlay_mini_map_marrow_tower_l.png')
+    loaded_dict["marrow_mini_map_tower_right"] = load_image('overlay_mini_map_marrow_tower_r.png')
+    loaded_dict["marrow_mini_map_ramps_left"] = load_image('overlay_mini_map_marrow_ramp_l.png')
+    loaded_dict["marrow_mini_map_ramps_right"] = load_image('overlay_mini_map_marrow_ramp_r.png')
+    loaded_dict["marrow_mini_map_ramps_right_end"] = load_image('overlay_mini_map_marrow_ramp_r_end.png')
+    loaded_dict["marrow_mini_map_ramps_left_end"] = load_image('overlay_mini_map_marrow_ramp_l_end.png')
+    loaded_dict["ectrenos_mini_map_left"] = load_image('overlay_mini_map_ectrenos_left.png')
+    loaded_dict["ectrenos_mini_map_right"] = load_image('overlay_mini_map_ectrenos_right.png')
+    loaded_dict["ectrenos_mini_map_front"] = load_image('overlay_mini_map_ectrenos_front.png')
+    loaded_dict["ectrenos_mini_map"] = load_image('overlay_mini_map_ectrenos.png')
+    loaded_dict["overlay_smelting"] = load_image('overlay_smelting.png', colorkey=True)
+    loaded_dict["overlay_enchanting"] = load_image('overlay_enchanting.png', colorkey=True)
+    loaded_dict["quest_accepted"] = load_image('overlay_quest_accepted.png')
+    loaded_dict["task_accepted"] = load_image('overlay_task_accepted.png')
+    loaded_dict["level_up_vis"] = load_image('overlay_level_up.png', colorkey=True)
+    loaded_dict["amuna_building_top"] = load_image('overlay_amuna_building_tops.png', colorkey=True)
+    loaded_dict["nuldar_building_top"] = load_image('overlay_nuldar_building_tops.png', colorkey=True)
+    loaded_dict["tree_top"] = load_image('overlay_tree_tops.png', colorkey=True)
+    loaded_dict["alcove_star"] = load_image('overlay_alcove_star.png', colorkey=True)
+    loaded_dict["ectrenos_front_interaction"] = load_image('bg_ectrenos_interaction_front.png')
+    loaded_dict["ectrenos_interaction"] = load_image('bg_ectrenos_interaction.png')
+    loaded_dict["eldream_interaction"] = load_image('bg_eldream_interaction.png')
+    loaded_dict["stardust_top"] = load_image('overlay_stardust_top.png', colorkey=True)
+    loaded_dict["chroma_bridge_small"] = load_image('overlay_chroma_bridge_small.png', colorkey=True)
+    loaded_dict["chroma_bridge"] = load_image('overlay_chroma_bridge.png', colorkey=True)
+    loaded_dict["chroma_forge"] = load_image('overlay_chroma_bridge_forge.png', colorkey=True)
+    loaded_dict["pet_energy"] = load_image('overlay_pet_energy.png', colorkey=True)
+    loaded_dict["eldream_menagerie"] = load_image('bg_eldream_menagerie.png')
+    loaded_dict["overlay_ectrene"] = load_image('overlay_ectrene.png', colorkey=True)
+    loaded_dict["overlay_stardust_waterfall"] = load_image('stardust_waterfall.png', colorkey=True)
+    loaded_dict["overlay_bridge_gate"] = load_image('overlay_bridge_gate.png', colorkey=True)
+    loaded_dict["overlay_chroma_ramps"] = load_image('overlay_chroma_ramps.png', colorkey=True)
+    loaded_dict["ectrenos_bg"] = load_image('bg_ectrenos.png')
+    loaded_dict["ectrenos_left_bg"] = load_image('bg_ectrenos_left.png')
+    loaded_dict["ectrenos_right_bg"] = load_image('bg_ectrenos_right.png')
+    loaded_dict["ectrenos_front_bg"] = load_image('bg_ectrenos_front.png')
+    loaded_dict["ectrenos_alcove_bg"] = load_image('bg_ectrenos_alcove.png')
+    loaded_dict["type advantages"] = load_image('overlay_type_advantages.png', colorkey=True)
+    loaded_dict["fishing_hut_bg"] = load_image('bg_fishing_hut.png')
+    loaded_dict["fishing_hut_screen"] = load_image('bg_fishing_hut_screen.png')
+    loaded_dict["fishing_alcove_bg"] = load_image('bg_ectrenos_fishing.png')
+    loaded_dict["eldream_river"] = load_image('overlay_eldream_river.png', colorkey=True)
+    loaded_dict["apothecary_window"] = load_image('overlay_apothecary_window.png')
+    loaded_dict["weapon_select"] = load_image('overlay_weapon_select.png', colorkey=True)
+    loaded_dict["chinzilla"] = load_image('sprite_chinzilla.png')
+    loaded_dict["caves_battle_screen"] = load_image('bg_cave_battle_screen.png')
+    loaded_dict["equipment_screen"] = load_image('overlay_equipment_screen.png')
+    loaded_dict["a_char_screen"] = load_image('screen_amuna_character_select.png')
+    loaded_dict["n_char_screen"] = load_image('screen_nuldar_character_select.png')
+    loaded_dict["s_char_screen"] = load_image('screen_sorae_character_select.png')
+    loaded_dict["nascent_grove_screen"] = load_image('bg_nascent_grove.png')
+    loaded_dict["stardust_cove_screen"] = load_image('bg_stardust_post.png')
+    loaded_dict["stardust_post_screen"] = load_image('bg_stardust_inn.png')
+    loaded_dict["star_battle_screen"] = load_image('bg_stardust_battle_screen.png')
+    loaded_dict["seldon_bg_screen"] = load_image('bg_seldon_district.png')
+    loaded_dict["korlok_bg_screen"] = load_image('bg_korlok_district.png')
+    loaded_dict["korlok_repaired_screen"] = load_image('bg_korlok_district_repaired.png')
+    loaded_dict["korlok_forge_bg"] = load_image('bg_korlok_forge.png')
+    loaded_dict["eldream_bg_screen"] = load_image('bg_eldream_district.png')
+    loaded_dict["eldream_altar_bg"] = load_image('bg_eldream_altar.png')
+    loaded_dict["marrow_interaction_bg"] = load_image('bg_marrow_interaction.png')
+    loaded_dict["marrow_entrance_bg"] = load_image('bg_marrow_enter.png')
+    loaded_dict["marrow_entrance_bg_open"] = load_image('bg_marrow_enter_open.png')
+    loaded_dict["marrow_tower_east_bg"] = load_image('bg_marrow_rampart_tower_east.png')
+    loaded_dict["marrow_tower_west_bg"] = load_image('bg_marrow_rampart_tower_west.png')
+    loaded_dict["marrow_rampart_east_bg"] = load_image('bg_marrow_rampart_east.png')
+    loaded_dict["marrow_rampart_west_bg"] = load_image('bg_marrow_rampart_west.png')
+    loaded_dict["marrow_rampart_east_end_bg"] = load_image('bg_marrow_rampart_east_end.png')
+    loaded_dict["marrow_rampart_west_end_bg"] = load_image('bg_marrow_rampart_west_end.png')
+    loaded_dict["marrow_rampart_west_end_bg_block"] = load_image('bg_marrow_rampart_east_end_block.png')
+    loaded_dict["marrow_district_bg"] = load_image('bg_marrow_district.png')
+    loaded_dict["sub_marrow_bg"] = load_image('bg_sub_marrow.png')
+    loaded_dict["overlay_marrow_ramps_east"] = load_image('overlay_marrow_ramp_east.png', colorkey=True)
+    loaded_dict["overlay_marrow_ramps_west"] = load_image('overlay_marrow_ramp_west.png', colorkey=True)
+    loaded_dict["rohir_river_screen"] = load_image('bg_rohir_river.png')
+    loaded_dict["reservoir_a_screen"] = load_image('bg_reservoir_a.png')
+    loaded_dict["reservoir_b_screen"] = load_image('bg_reservoir_b.png')
+    loaded_dict["reservoir_c_screen"] = load_image('bg_reservoir_c.png')
+    loaded_dict["reservoir_battle_screen"] = load_image('bg_reservoir_battle_screen.png')
+    loaded_dict["seldon_battle_screen"] = load_image('bg_seldon_battle_screen.png')
+    loaded_dict["nascent_interaction_screen"] = load_image('bg_nascent_interaction_screen.png')
+    loaded_dict["korlok_battle_screen"] = load_image('bg_korlok_battle_screen.png')
+    loaded_dict["mines_battle_screen"] = load_image('bg_mines_battle.png')
+    loaded_dict["alcove_battle_screen"] = load_image('bg_ectrenos_alcove_battle_screen.png')
+    loaded_dict["seldon_shop_screen"] = load_image('bg_seldon_shop.png')
+    loaded_dict["korlok_shop_screen"] = load_image('bg_korlok_shop.png')
+    loaded_dict["eldream_shop_screen"] = load_image('bg_eldream_shop.png')
+    loaded_dict["seldon_inn_day"] = load_image('bg_seldon_inn.png')
+    loaded_dict["seldon_inn_night"] = load_image('bg_seldon_inn_night.png')
+    loaded_dict["seldon_inn_morning"] = load_image('bg_seldon_inn_morning.png')
+    loaded_dict["seldon_inn_afternoon"] = load_image('bg_seldon_inn_afternoon.png')
+    loaded_dict["korlok_inn_day"] = load_image('bg_korlok_inn.png')
+    loaded_dict["korlok_inn_night"] = load_image('bg_korlok_inn_night.png')
+    loaded_dict["korlok_inn_morning"] = load_image('bg_korlok_inn_morning.png')
+    loaded_dict["korlok_inn_afternoon"] = load_image('bg_korlok_inn_afternoon.png')
+    loaded_dict["eldream_inn_day"] = load_image('bg_eldream_inn.png')
+    loaded_dict["eldream_inn_night"] = load_image('bg_eldream_inn_night.png')
+    loaded_dict["eldream_inn_morning"] = load_image('bg_eldream_inn_morning.png')
+    loaded_dict["eldream_inn_afternoon"] = load_image('bg_eldream_inn_afternoon.png')
+    loaded_dict["terra_trail_bg"] = load_image('bg_terra_trail.png')
+    loaded_dict["seldon_academia_screen"] = load_image('bg_seldon_academia.png')
+    loaded_dict["seldon_hearth_screen"] = load_image('screen_seldon_hearth.png')
+    loaded_dict["eldream_hearth_screen"] = load_image('screen_eldream_hearth.png')
+    loaded_dict["marrow_hearth_screen"] = load_image('screen_marrow_hearth.png')
+    loaded_dict["game_over_screen"] = load_image('screen_game_over.png')
+    loaded_dict["start_screen"] = load_image('start_screen.png')
+    loaded_dict["start_screen_logo"] = load_image('start_screen_logo.png', colorkey=True)
+    loaded_dict["nera_sleep_screen"] = load_image('screen_nera_sleep.png')
+    loaded_dict["bar_backdrop"] = load_image('overlay_status_bar_backdrop.png', colorkey=True)
+    loaded_dict["enemy_status"] = load_image('overlay_enemy_status_backdrop.png', colorkey=True)
+    loaded_dict["enemy_bar_backdrop"] = load_image('overlay_enemy_status_bar.png', colorkey=True)
+    loaded_dict["buy_inventory"] = load_image('overlay_buy_inventory.png', colorkey=True)
+    loaded_dict["pine_tree"] = load_image('sprite_pine_tree.png', colorkey=True)
+    loaded_dict["rohir_gate"] = load_image('overlay_rohir_gate.png', colorkey=True)
+    loaded_dict["lets_go_button"] = load_image('button_lets_go.png', colorkey=True)
+    loaded_dict["learn_button"] = load_image('overlay_learn.png', colorkey=True)
+    loaded_dict["skill_learn_button"] = load_image('overlay_skill_learn.png', colorkey=True)
+    loaded_dict["nascent_gate_popup"] = load_image('popup_nascent_gate.png', colorkey=True)
+    loaded_dict["level_up_win"] = load_image('popup_level_up.png', colorkey=True)
+    loaded_dict["close_button"] = load_image('button_close.png', colorkey=True)
+    loaded_dict["knowledge_window"] = load_image('overlay_knowledge.png', colorkey=True)
+    loaded_dict["skill_bar"] = load_image('overlay_skill_bar.png', colorkey=True)
+    loaded_dict["start_button"] = load_image('button_start.png', colorkey=True)
+    loaded_dict["npc_name_plate"] = load_image('overlay_npc_name_plate.png', colorkey=True)
+    loaded_dict["char_select_overlay"] = load_image('overlay_character_select.png', colorkey=True)
+    loaded_dict["role_selection_overlay"] = load_image('overlay_role_select.png', colorkey=True)
+    loaded_dict["location_overlay"] = load_image('overlay_location.png', colorkey=True)
+    loaded_dict["popup_loot"] = load_image('popup_enemy_defeat.png', colorkey=True)
+    loaded_dict["stardust_entrance"] = load_image('overlay_stardust_entrance.png', colorkey=True)
+    loaded_dict["upgrade_overlay"] = load_image('overlay_upgrade_select.png', colorkey=True)
+    loaded_dict["cat_pet_button_overlay"] = load_image('overlay_cat_pet.png', colorkey=True)
+    loaded_dict["book_high"] = load_image('book_button_highlight.png', colorkey=True)
+    loaded_dict["save hearth high"] = load_image('buttons_small_high.png', colorkey=True)
+    loaded_dict["lets_go_button_high"] = load_image('button_lets_go_highlight.png', colorkey=True)
+    loaded_dict["apothis_1"] = load_image('cutscene_apothis_1.png')
+    loaded_dict["apothis_2"] = load_image('cutscene_apothis_2.png')
+    loaded_dict["apothis_3"] = load_image('cutscene_apothis_3.png')
+    loaded_dict["apothis_4"] = load_image('cutscene_apothis_4.png')
+    loaded_dict["apothis_5"] = load_image('cutscene_apothis_5.png')
+    loaded_dict["apothis_6"] = load_image('cutscene_apothis_6.png')
+    loaded_dict["apothis_1_night"] = load_image('cutscene_apothis_1_night.png')
+    loaded_dict["apothis_2_night"] = load_image('cutscene_apothis_2_night.png')
+    loaded_dict["apothis_3_night"] = load_image('cutscene_apothis_3_night.png')
+    loaded_dict["apothis_4_night"] = load_image('cutscene_apothis_4_night.png')
+    loaded_dict["apothis_5_night"] = load_image('cutscene_apothis_5_night.png')
+    loaded_dict["apothis_6_night"] = load_image('cutscene_apothis_6_night.png')
+    loaded_dict["dreth_0"] = load_image('cutscene_apothis_dreth_0.png')
+    loaded_dict["dreth_1"] = load_image('cutscene_apothis_dreth_1.png')
+    loaded_dict["dreth_2"] = load_image('cutscene_apothis_dreth_2.png')
+    loaded_dict["dreth_3"] = load_image('cutscene_apothis_dreth_3.png')
+    loaded_dict["dreth_4"] = load_image('cutscene_apothis_dreth_4.png')
+    loaded_dict["dreth_5"] = load_image('cutscene_apothis_dreth_5.png')
+    loaded_dict["dreth_6"] = load_image('cutscene_apothis_dreth_6.png')
+    loaded_dict["dreth_7"] = load_image('cutscene_apothis_dreth_7.png')
+    loaded_dict["dreth_8"] = load_image('cutscene_apothis_dreth_8.png')
+    loaded_dict["final_1"] = load_image('cutscene_final_1.png')
+    loaded_dict["final_2"] = load_image('cutscene_final_2.png')
+    loaded_dict["final_3"] = load_image('cutscene_final_3.png')
+    loaded_dict["final_4"] = load_image('cutscene_final_4.png')
+    loaded_dict["final_5"] = load_image('cutscene_final_5.png')
+    loaded_dict["final_6"] = load_image('cutscene_final_6.png')
+    loaded_dict["final_7"] = load_image('cutscene_final_7.png')
+    loaded_dict["final_8"] = load_image('cutscene_final_8.png')
+    loaded_dict["final_9"] = load_image('cutscene_final_9.png')
+    loaded_dict["final_10"] = load_image('cutscene_final_10.png')
+    loaded_dict["final_11"] = load_image('cutscene_final_11.png')
+    loaded_dict["final_12"] = load_image('cutscene_final_12.png')
+    loaded_dict["final_13"] = load_image('cutscene_final_13.png')
+    loaded_dict["final_14"] = load_image('cutscene_final_14.png')
+    loaded_dict["credits_1"] = load_image('screen_credits_marrow.png')
+    loaded_dict["credits_2"] = load_image('screen_credits_seldon.png')
+    loaded_dict["credits_3"] = load_image('screen_credits_korlok.png')
+    loaded_dict["credits_4"] = load_image('screen_credits_eldream.png')
+    loaded_dict["credits_5"] = load_image('screen_credits_thanks.png')
+    loaded_dict["water_player"] = load_image('overlay_water_player.png')
+    loaded_dict["water"] = load_image('overlay_water.png')
+    loaded_dict["dungeon_entrance"] = load_image('overlay_dungeon_entrance.png', colorkey=True)
+    loaded_dict["world_map"] = load_image('consona_region_map.png')
+    loaded_dict["map_button"] = load_image('button_map.png', colorkey=True)
+    loaded_dict["map_button_high"] = load_image('button_map_highlight.png', colorkey=True)
+    loaded_dict["nede_big"] = load_image('sprites_nede_big.png', colorkey=True)
+    loaded_dict["dungeon_wall_1"] = load_image('overlay_dungeon_wall_1.png', colorkey=True)
+    loaded_dict["dungeon_wall_2"] = load_image('overlay_dungeon_wall_2.png', colorkey=True)
+    loaded_dict["dungeon_teleporter"] = load_image('overlay_dungeon_teleporter.png')
+    loaded_dict["dungeon_drop_wall"] = load_image('overlay_dungeon_drop_wall.png')
+    loaded_dict["dungeon_gate"] = load_image('overlay_dungeon_gate.png', colorkey=True)
+    loaded_dict["muchador_arena"] = load_image('overlay_muchador_arena.png')
+    loaded_dict["reservoir_passage"] = load_image('overlay_reservoir_passage.png', colorkey=True)
+    loaded_dict["reservoir_exit"] = load_image('overlay_reservoir_exit.png', colorkey=True)
+    loaded_dict["reservoir_enter"] = load_image('overlay_reservoir_enter.png', colorkey=True)
+    loaded_dict["korlok_hearth_screen"] = load_image('screen_korlok_hearth.png')
+    loaded_dict["mines_entrance"] = load_image('overlay_mines_entrance.png', colorkey=True)
+    loaded_dict["korlok_mines"] = load_image('bg_korlok_mines.png')
+    loaded_dict["mines_wall"] = load_image('overlay_mines_wall.png', colorkey=True)
+    loaded_dict["mines_light"] = load_image('overlay_mines_light.png', colorkey=True)
+    loaded_dict["korlok_apothecary"] = load_image('bg_korlok_apothecary.png')
+    loaded_dict["terra_mountains"] = load_image('overlay_terra_trail_mountains.png', colorkey=True)
+    loaded_dict["terra_cave"] = load_image('overlay_trail_cave.png', colorkey=True)
+    loaded_dict["terra_trail_screen"] = load_image('bg_terra_trail_screen.png')
+    loaded_dict["kart_overworld"] = load_image('sprite_kart_overworld_full.png', colorkey=True)
+    loaded_dict["kart_full"] = load_image('sprite_kart_full.png', colorkey=True)
+    loaded_dict["mirror_overlay"] = load_image('overlay_mirror_image.png', colorkey=True)
+    loaded_dict["marrow_switch"] = load_image('overlay_marrow_switch.png', colorkey=True)
+    loaded_dict["marrow_switch_blue"] = load_image('overlay_marrow_switch_blue.png', colorkey=True)
+    loaded_dict["marrow_switch_red"] = load_image('overlay_marrow_switch_red.png', colorkey=True)
+    loaded_dict["marrow_switch_purple"] = load_image('overlay_marrow_switch_purple.png', colorkey=True)
+    loaded_dict["marrow_switch_complete"] = load_image('overlay_marrow_switch_complete.png', colorkey=True)
+    loaded_dict["marrow_switch_box"] = load_image('marrow_switch_box.png', colorkey=True)
+    loaded_dict["popup_wide"] = load_image('popup_interaction_wide.png', colorkey=True)
+    loaded_dict["marrow_ramparts_battle"] = load_image('bg_marrow_rampart_battle.png')
+    loaded_dict["marrow_tower_battle"] = load_image('bg_marrow_tower_battle.png')
+    loaded_dict["overlay_enemy_vanish"] = load_image('overlay_enemy_vanish.png', colorkey=True)
+    loaded_dict["overlay_stardust_star"] = load_image('overlay_stardust_star.png', colorkey=True)
 
     # sprite sheets ----------------------------------------------------------------------------------------------------
     # korlok interaction snowfall --------------------------------------------------------------------------------------
